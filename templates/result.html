@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Interview Feedback</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+
+.result-card{
+    background:white;
+    margin-top:25px;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.feedback{
+    white-space:pre-wrap;
+    line-height:1.8;
+    font-size:17px;
+    word-break:break-word;
+}
+
+.button-group{
+    margin-top:30px;
+    text-align:center;
+}
+
+.button-group a{
+    text-decoration:none;
+}
+
+.button-group button{
+    margin:10px;
+}
+
+.question-box{
+
+    background:#eef5ff;
+    padding:15px;
+    border-left:5px solid #0d6efd;
+    border-radius:8px;
+    margin-bottom:20px;
+
+}
+
+.answer-box{
+
+    background:#f8f9fa;
+    padding:15px;
+    border-left:5px solid #198754;
+    border-radius:8px;
+    margin-bottom:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🤖 AI Interview Feedback</h1>
+<div class="stats">
+
+    <div class="stat-card">
+        <h2>📄</h2>
+        <h3>Resume Analysis</h3>
+    </div>
+
+    <div class="stat-card">
+        <h2>📊</h2>
+        <h3>ATS Score</h3>
+    </div>
+
+    <div class="stat-card">
+        <h2>🎤</h2>
+        <h3>Mock Interview</h3>
+    </div>
+
+    <div class="stat-card">
+        <h2>🤖</h2>
+        <h3>Gemini AI</h3>
+    </div>
+
+</div>
+
+<div class="result-card">
+
+<h2>Interview Question</h2>
+
+<div class="question-box">
+
+{{ question }}
+
+</div>
+
+<h2>Your Answer</h2>
+
+<div class="answer-box">
+
+{{ answer }}
+
+</div>
+
+<h2>AI Evaluation</h2>
+
+<div class="feedback">
+
+{{ feedback }}
+
+</div>
+
+<div class="button-group">
+
+{% if next_question %}
+
+<a href="/interview">
+    <button>
+        ➡ Next Question
+    </button>
+</a>
+
+{% else %}
+
+<a href="/">
+    <button>
+        ✅ Finish Interview
+    </button>
+</a>
+
+{% endif %}
+
+<a href="/">
+    <button>
+        🏠 Home
+    </button>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
