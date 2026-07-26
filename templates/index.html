@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Interview Preparation & Resume Analysis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<meta charset="UTF-8">
+<title>AI Interview System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:30px;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+h1{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:30px;
+}
+
+.section{
+    margin-bottom:20px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-bottom:8px;
+}
+
+textarea{
+    width:100%;
+    min-height:150px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    resize:vertical;
+    box-sizing:border-box;
+}
+
+input[type=file]{
+    width:100%;
+    padding:10px;
+}
+
+button{
+    padding:12px 25px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0b5ed7;
+}
+
+.card{
+    background:#ffffff;
+    border-left:5px solid #0d6efd;
+    padding:20px;
+    margin-top:25px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card h2{
+    margin-top:0;
+    color:#0d6efd;
+}
+
+.result-box{
+    white-space:pre-wrap;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+    line-height:1.7;
+}
+
+.skill{
+    display:inline-block;
+    background:#e7f1ff;
+    color:#0d6efd;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+.skill.missing{
+    background:#ffe5e5;
+    color:#dc3545;
+}
+
+.score{
+    font-size:42px;
+    font-weight:bold;
+    color:#198754;
+    text-align:center;
+}
+
+.start-btn{
+    text-align:center;
+    margin-top:30px;
+}
+
+.start-btn a{
+    display:inline-block;
+    padding:14px 30px;
+    background:#198754;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:18px;
+}
+
+.start-btn a:hover{
+    background:#157347;
+}
+
+@media(max-width:768px){
+
+.container{
+width:95%;
+padding:20px;
+}
+
+.score{
+font-size:32px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🤖 AI Resume Screening & Mock Interview System</h1>
+
+<p style="text-align:center; color:#666; margin-bottom:30px;">
+Upload your resume, get an ATS score, AI resume analysis, personalized interview questions, and AI interview feedback.
+</p>
+
+<div class="stats">
+
+    <div class="stat-card">
+        <h2>📄</h2>
+        <h3>Resume Analysis</h3>
+    </div>
+
+    <div class="stat-card">
+        <h2>📊</h2>
+        <h3>ATS Score</h3>
+    </div>
+
+    <div class="stat-card">
+        <h2>🎤</h2>
+        <h3>Mock Interview</h3>
+    </div>
+
+    <div class="stat-card">
+        <h2>🤖</h2>
+        <h3>Gemini AI</h3>
+    </div>
+
+</div>
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+<div class="section">
+
+<label><b>Enter Job Description</b></label>
+
+<textarea
+name="job_description"
+placeholder="Paste Job Description Here..."
+required></textarea>
+
+</div>
+
+<div class="section">
+
+<label><b>Upload Resume (PDF)</b></label><br>
+
+<input type="file"
+name="resume"
+accept=".pdf"
+required>
+
+</div>
+
+<button type="submit">
+
+Generate Interview Questions
+
+</button>
+
+</form>
+
+{% if questions %}
+
+<div class="output">
+
+<h2>Generated Interview Questions</h2>
+
+<div class="question-box">
+
+{{ questions }}
+
+</div>
+
+<div class="start-btn">
+
+<a href="/interview">
+
+<button>
+
+🚀 Start Mock Interview
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
