@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Final Interview Result</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎉 Interview Completed</h1>
+
+<div class="card">
+
+<h2>Your Final Score</h2>
+
+<div class="score">
+
+{{ score }} / {{ total }}
+
+</div>
+
+{% if score >= 80 %}
+
+<h2>🌟 Excellent Performance!</h2>
+
+{% elif score >= 60 %}
+
+<h2>👍 Good Job!</h2>
+
+{% else %}
+
+<h2>📚 Keep Practising!</h2>
+
+{% endif %}
+
+<a href="/">
+
+<button>
+
+🏠 Back to Home
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
